@@ -74,7 +74,7 @@ namespace MenuTest
         {
             Fryceritops ft = new Fryceritops();
             ft.Size = size;
-            Assert.Equal($"{size} Friceritops", ft.ToString());
+            Assert.Equal($"{size} Fryceritops", ft.ToString());
         }
 
         [Theory]
@@ -121,7 +121,7 @@ namespace MenuTest
         [InlineData(Size.Small, true)]
         [InlineData(Size.Medium, true)]
         [InlineData(Size.Large, true)]
-        public void JurrasicJavaToStringShouldGiveNameForSizeAndDecaf(Size size, bool decaf)
+        public void JurassicJavaToStringShouldGiveNameForSizeAndDecaf(Size size, bool decaf)
         {
             JurassicJava java = new JurassicJava();
             java.Size = size;
@@ -157,7 +157,7 @@ namespace MenuTest
         {
             Sodasaurus soda = new Sodasaurus();
             soda.Size = size;
-            soda.Flavor = flavor;
+            soda.flavor = flavor;
             Assert.Equal($"{size} {flavor} Sodasaurus", soda.ToString());
         }
 

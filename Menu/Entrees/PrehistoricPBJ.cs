@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Entrees
+
+namespace DinoDiner.Menu
 {
     public class PrehistoricPBJ : Entree
     {
@@ -10,6 +10,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public PrehistoricPBJ()
         {
+            name = "Prehistoric PB&J";
             ingredients = new List<string>() { "Bread", "Peanut Butter", "Jelly" };
             price = 6.52;
             calories = 483;

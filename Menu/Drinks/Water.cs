@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     public class Water : Drink
     {
@@ -12,6 +11,8 @@ namespace DinoDiner.Menu.Drinks
         /// </summary>
         public Water()
         {
+            name = "Water";
+
             ingredients = new List<string>() { "Water" };
             prices = new double[] { .1, .1, .1 };
             

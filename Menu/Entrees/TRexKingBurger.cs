@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Entrees
+
+namespace DinoDiner.Menu
 {
     public class TRexKingBurger : Entree
     {
@@ -12,6 +12,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public TRexKingBurger()
         {
+            name = "T-Rex King Burger";
             ingredients = new List<string>() { "Whole Wheat Bun", "Steakburger Pattie", "Steakburger Pattie", "Steakburger Pattie", "Lettuce", "Tomato", "Onion", "Pickle", "Ketchup", "Mustard", "Mayo" };
             price = 8.45;
             calories = 728;

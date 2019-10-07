@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Enum of possible soda flavors
@@ -21,12 +20,21 @@ namespace DinoDiner.Menu.Drinks
 
     public class Sodasaurus : Drink
     {
-        public SodasaurusFlavor flavor;
+        SodasaurusFlavor _flavor;
+        public SodasaurusFlavor flavor
+        {
+            get { return _flavor; }
+            set {
+                extra = " " + value.ToString();
+                _flavor = value;
+            }
+        }
         /// <summary>
         /// Creates a new Sodasaurus instance
         /// </summary>
         public Sodasaurus()
         {
+            name = "Sodasaurus";
             ingredients = new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
             prices = new double[] { 1.5, 2, 2.5 };
             calories = new uint[] { 112, 156, 208 };

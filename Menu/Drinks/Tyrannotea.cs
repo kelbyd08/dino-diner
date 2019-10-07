@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     public class Tyrannotea : Drink
     {
@@ -12,6 +11,7 @@ namespace DinoDiner.Menu.Drinks
         /// </summary>
         public Tyrannotea()
         {
+            name = "Tyrannotea";
             ingredients = new List<string>() { "Water", "Tea" };
             prices = new double[] { .99, 1.49, 1.99 };
             calories = new uint[] { 8, 16, 32 };
@@ -31,9 +31,13 @@ namespace DinoDiner.Menu.Drinks
         /// </summary>
         public bool Sweet
         {
-            get{return Sweet; }
+            get{return sweet; }
             set
             {
+                if (value)
+                    extra = " Sweet";
+                else
+                    extra = "";
                 sweet = value;
                 ingredients.Add("Cane Sugar");
             }

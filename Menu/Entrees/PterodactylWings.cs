@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Entrees
+
+namespace DinoDiner.Menu
 {
     public class PterodactylWings : Entree
     {
@@ -12,6 +12,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public PterodactylWings()
         {
+            name = "Pterodactyl Wings";
             ingredients = new List<string>() { "Chicken", "Wing Sauce" };
             price = 7.21;
             calories = 318;

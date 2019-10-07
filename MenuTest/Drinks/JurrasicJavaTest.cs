@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-using DinoDiner.Menu.Drinks;
-using DinoDiner.Menu.AbstractClasses;
+using DinoDiner.Menu;
 
 namespace MenuTest.Drinks
 {
-    public class JurrasicJavaTest
+    public class JurassicJavaTest
     {
         /// <summary>
         /// Expected lists
@@ -26,7 +25,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void CorrectDefaultProperties()
         {
-            JurrasicJava jj = new JurrasicJava();
+            JurassicJava jj = new JurassicJava();
             Assert.Equal(prices[0], jj.Price);
             Assert.Equal(calories[0], jj.Calories);
             Assert.Equal(Size.Small, jj.Size);
@@ -41,7 +40,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void ShouldHaveCorrectPriceAndCalories()
         {
-            JurrasicJava jj = new JurrasicJava();
+            JurassicJava jj = new JurassicJava();
             for (uint i = 0; i < 3; i++)
             {
                 jj.Size = (Size)i;
@@ -55,7 +54,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void AddIceShouldSetTrue()
         {
-            JurrasicJava jj = new JurrasicJava();
+            JurassicJava jj = new JurassicJava();
             Assert.False(jj.Ice);
             jj.AddIce();
             Assert.True(jj.Ice);
@@ -66,7 +65,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void LeaveSpaceForCreamShouldSetTrue()
         {
-            JurrasicJava jj = new JurrasicJava();
+            JurassicJava jj = new JurassicJava();
             Assert.False(jj.SpaceForCream);
             jj.LeaveRoomForCream();
             Assert.True(jj.SpaceForCream);
@@ -77,7 +76,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void ShouldHaveCorrectIngredients()
         {
-            JurrasicJava jj = new JurrasicJava();
+            JurassicJava jj = new JurassicJava();
             Assert.Equal(expectedIngredients, jj.Ingredients);
         }
     }

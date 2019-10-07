@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.Entrees;
-using DinoDiner.Menu.Sides;
-using DinoDiner.Menu.Drinks;
-using DinoDiner.Menu.AbstractClasses;
+using DinoDiner.Menu;
 using System.Linq;
 
 namespace DinoDiner.Menu
@@ -45,14 +42,14 @@ namespace DinoDiner.Menu
             }
         }
 
-        public Sides.Size size = Sides.Size.Small;
-        public Sides.Size Size
+        public Size size = Size.Small;
+        public Size Size
         {
             get { return size; }
             set
             {
                 size = value;
-                Drink.Size = (AbstractClasses.Size)value;
+                Drink.Size = (Size)value;
                 Side.Size = value;
             }
         }
@@ -67,6 +64,11 @@ namespace DinoDiner.Menu
                 ingredients.AddRange(Side.Ingredients);
                 return ingredients;
             }
+        }
+
+        public override string ToString()
+        {
+            return Entree.ToString() + " Combo";
         }
     }
 }
