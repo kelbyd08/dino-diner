@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.AbstractClasses
+namespace DinoDiner.Menu
 {
-    public enum Size
-    {
-        Small,
-        Medium,
-        Large
-    }
 
-    public abstract class Drink
+    public abstract class Drink : IMenuItem
     {
         protected double[] prices = new double[3];
 
+        /// <summary>
+        /// The name of each item
+        /// </summary>
+        protected string name;
+
+        /// <summary>
+        /// An extra string to be appended to the name
+        /// </summary>
+        protected string extra = "";
 
         /// <summary>
         /// The amount of calories in each size
@@ -69,6 +72,13 @@ namespace DinoDiner.Menu.AbstractClasses
         {
             ice = false;
         }
-
+        /// <summary>
+        /// Overridden ToString()
+        /// </summary>
+        /// <returns>string</returns>
+        public override string ToString()
+        {
+            return Size + extra + " " + name;
+        }
     }
 }

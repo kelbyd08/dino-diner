@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class Brontowurst : Entree
     {
@@ -12,12 +11,13 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public Brontowurst()
         {
+            name = "Brontowurst";
             ingredients = new List<string>() { "Brautwurst", "Whole Wheat Bun", "Peppers", "Onion" };
             price = 5.36;
             calories = 498;
             count = 1;
         }
-        
+
         /// <summary>
         /// Removes the bun from the ingredients.
         /// </summary>

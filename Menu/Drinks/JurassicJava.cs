@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
-    public class JurrasicJava : Drink
+    public class JurassicJava : Drink
     {
-        public JurrasicJava()
+        public JurassicJava()
         {
+            name = "Jurassic Java";
             ice = false;
             prices = new double[] { .59, .99, 1.49 };
             calories = new uint[] { 2, 4, 8 };
@@ -23,8 +23,23 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Returns if the coffee should be decaffinated
         /// </summary>
-        public bool Decaf{get; set;}
+        bool decaf;
 
+        /// <summary>
+        /// Returns if the coffee should be decaffinated
+        /// </summary>
+        public bool Decaf
+        {
+            get { return decaf; }
+            set
+            {
+                if (value)
+                    extra = " Decaf";
+                else
+                    extra = "";
+                decaf = value;
+            }
+        }
         /// <summary>
         /// Keeps space for cream in the drink. 
         /// </summary>

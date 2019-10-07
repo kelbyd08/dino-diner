@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.AbstractClasses
+namespace DinoDiner.Menu
 {
-    public abstract class Entree
+    public abstract class Entree : IMenuItem
     {
+        /// <summary>
+        /// The name of each item
+        /// </summary>
+        protected string name;
         /// <summary>
         /// The price for each additional item.
         /// </summary>
@@ -62,6 +66,13 @@ namespace DinoDiner.Menu.AbstractClasses
         {
             get { return new List<string>(ingredients); }
         }
-
+        /// <summary>
+        /// Overridden ToString()
+        /// </summary>
+        /// <returns>string</returns>
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Entrees
+
+namespace DinoDiner.Menu
 {
     public class VelociWrap : Entree
     {
@@ -12,6 +12,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public VelociWrap()
         {
+            name = "Veloci-Wrap";
             ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast", "Romaine Lettuce", "Ceasar Dressing", "Parmesan Cheese" };
             price = 6.86;
             calories = 356;

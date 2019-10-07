@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
 
     public enum Size
@@ -13,7 +13,7 @@ namespace DinoDiner.Menu.Sides
     }
 
 
-    public abstract class Side
+    public abstract class Side : IMenuItem
     {
         readonly double[] prices =
         {
@@ -21,7 +21,10 @@ namespace DinoDiner.Menu.Sides
             1.45,
             1.95
         };
-
+        /// <summary>
+        /// The name of each item
+        /// </summary>
+        protected string name = "";
 
         /// <summary>
         /// The price of the current entree. Includes the additional items.
@@ -64,6 +67,13 @@ namespace DinoDiner.Menu.Sides
         {
             get { return new List<string>(ingredients); }
         }
-
+        /// <summary>
+        /// Overridden ToString()
+        /// </summary>
+        /// <returns>string</returns>
+        public override string ToString()
+        {
+            return Size + " " + name;
+        }
     }
 }

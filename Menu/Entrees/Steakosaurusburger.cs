@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.AbstractClasses;
 
-namespace DinoDiner.Menu.Entrees
+
+namespace DinoDiner.Menu
 {
     public class SteakosaurusBurger : Entree
     {
@@ -12,6 +12,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public SteakosaurusBurger()
         {
+            name = "Steakosaurus Burger";
             ingredients = new List<string>() { "Whole Wheat Bun", "Steakburger Pattie", "Pickle", "Ketchup", "Mustard" };
             price = 5.15;
             calories = 621;
