@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  Sodasaurus
+*   Author: Kelby Dinkel
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 
