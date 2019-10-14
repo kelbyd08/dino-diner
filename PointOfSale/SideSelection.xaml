@@ -1,0 +1,60 @@
+﻿<Page x:Class="PointOfSale.SideSelection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SideSelection">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <WrapPanel>
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="MinWidth" Value="200"/>
+                    <Setter Property="MinHeight" Value="200"/>
+                    <Setter Property="BorderBrush" Value="Gray"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+            </WrapPanel.Resources>
+            <Button>
+                <StackPanel>
+                    <Image Width="150" Source="Images/DinoDiner-08.png"></Image>
+                    <TextBlock>Fryceritops</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel>
+                    <Image Width="150" Source="Images/DinoDiner-11.png"></Image>
+                    <TextBlock>Triceritots</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel>
+                    <Image Width="150" Source="Images/DinoDiner-09.png"></Image>
+                    <TextBlock>Meteor Mac &amp; Cheese</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel>
+                    <Image Width="150" Source="Images/DinoDiner-10.png"></Image>
+                    <TextBlock>Mozzerella Sticks</TextBlock>
+                </StackPanel>
+            </Button>
+        </WrapPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property="FontSize" Value="25"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton>Small</RadioButton>
+            <RadioButton>Medium</RadioButton>
+            <RadioButton>Large</RadioButton>
+        </StackPanel>
+    </Grid>
+</Page>

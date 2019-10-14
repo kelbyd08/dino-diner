@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  CretaceousCombo.cs
+*   Author: Kelby Dinkel
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 using DinoDiner.Menu;
