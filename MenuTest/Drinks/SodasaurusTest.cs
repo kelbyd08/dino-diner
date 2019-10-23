@@ -90,5 +90,70 @@ namespace MenuTest.Drinks
             Assert.Equal(calories[0], soda.Calories);
             Assert.Equal(Size.Small, soda.Size);
         }
+        [Theory]
+        [InlineData(Size.Small, SodasaurusFlavor.Cherry)]
+        [InlineData(Size.Small, SodasaurusFlavor.Chocolate)]
+        [InlineData(Size.Small, SodasaurusFlavor.Cola)]
+        [InlineData(Size.Small, SodasaurusFlavor.Lime)]
+        [InlineData(Size.Small, SodasaurusFlavor.Orange)]
+        [InlineData(Size.Small, SodasaurusFlavor.RootBeer)]
+        [InlineData(Size.Small, SodasaurusFlavor.Vanilla)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Cherry)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Chocolate)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Cola)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Lime)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Orange)]
+        [InlineData(Size.Medium, SodasaurusFlavor.RootBeer)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Vanilla)]
+        [InlineData(Size.Large, SodasaurusFlavor.Cherry)]
+        [InlineData(Size.Large, SodasaurusFlavor.Chocolate)]
+        [InlineData(Size.Large, SodasaurusFlavor.Cola)]
+        [InlineData(Size.Large, SodasaurusFlavor.Lime)]
+        [InlineData(Size.Large, SodasaurusFlavor.Orange)]
+        [InlineData(Size.Large, SodasaurusFlavor.RootBeer)]
+        [InlineData(Size.Large, SodasaurusFlavor.Vanilla)]
+        public void SodaSaurusDescriptionIsCorrect(Size size, SodasaurusFlavor flavor)
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = size;
+            soda.flavor = flavor;
+            Assert.Equal($"{size} {flavor} Sodasaurus", soda.Description);
+        }
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void SpecialIsCorrect(bool HoldIce)
+        {
+            List<String> test_lst = new List<string>();
+            Sodasaurus soda = new Sodasaurus();
+            if (HoldIce)
+            {
+                soda.HoldIce();
+                test_lst.Add("Hold Ice");
+            }
+
+            Assert.Equal(test_lst.ToArray(), soda.Special);
+        }
+        [Theory]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void SizeChangeShouldNotifyChange(string expected)
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.PropertyChanged(soda, expected, () =>
+            {
+                soda.Size = Size.Medium;
+            });
+        }
+        [Theory]
+        [InlineData("Special")]
+        public void HoldIceShouldNotifyChange(string expected)
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.PropertyChanged(soda, expected, () =>
+            {
+                soda.HoldIce();
+            });
+        }
     }
 }

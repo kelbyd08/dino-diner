@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class PrehistoricPBJ : Entree
+    public class PrehistoricPBJ : Entree, INotifyPropertyChanged
     {
         /// <summary>
         /// Creates a new PrehistoricPBJ instance.
@@ -23,6 +23,8 @@ namespace DinoDiner.Menu
         public void HoldPeanutButter()
         {
             ingredients.Remove("Peanut Butter");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
         
         /// <summary>
@@ -31,6 +33,22 @@ namespace DinoDiner.Menu
         public void HoldJelly()
         {
             ingredients.Remove("Jelly");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
+        }
+
+        /// <summary>
+        /// Special Instructions for entree creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if ( !ingredients.Contains( "Peanut Butter" ) ) special.Add("Hold Peanut Butter");
+                if ( !ingredients.Contains("Jelly")) special.Add("Hold Jelly");
+                return special.ToArray();
+            }
         }
     }
 }

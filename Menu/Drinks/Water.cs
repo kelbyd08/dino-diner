@@ -30,6 +30,21 @@ namespace DinoDiner.Menu
         {
             lemon = true;
             ingredients.Add("Lemon");
+            NotifyOfPropertyChanged("Special");
+
+        }
+        /// <summary>
+        /// Special Instructions for drink creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!ice) special.Add("Hold Ice");
+                if (lemon) special.Add("Add Lemon");
+                return special.ToArray();
+            }
         }
     }
 }

@@ -30,6 +30,8 @@ namespace DinoDiner.Menu
             set {
                 extra = " " + value.ToString();
                 _flavor = value;
+                NotifyOfPropertyChanged("Name");
+
             }
         }
         /// <summary>
@@ -41,6 +43,18 @@ namespace DinoDiner.Menu
             ingredients = new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
             prices = new double[] { 1.5, 2, 2.5 };
             calories = new uint[] { 112, 156, 208 };
+        }
+        /// <summary>
+        /// Special Instructions for drink creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!ice) special.Add("Hold Ice");
+                return special.ToArray();
+            }
         }
     }
 }

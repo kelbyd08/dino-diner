@@ -35,14 +35,14 @@ namespace PointOfSale
         private void SodaClick(object sender, RoutedEventArgs e)
         {
             //Delete all objects from the additional options panel
-            StackPanel extra = ((Grid)((WrapPanel)((Button)sender).Parent).Parent).FindName("AdditionalOptions") as StackPanel;
-            extra.Children.Clear();
+            
+            AdditionalOptions.Children.Clear();
 
             //Create a new flavor button and assign the click handler
             Button btn = new Button();
             btn.Content = "Flavor";
             btn.Click += FlavorClick;
-            extra.Children.Add(btn);
+            AdditionalOptions.Children.Add(btn);
         }
         /// <summary>
         /// Click handler for the tea button

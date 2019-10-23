@@ -39,6 +39,9 @@ namespace DinoDiner.Menu
                 else
                     extra = "";
                 sweet = value;
+                NotifyOfPropertyChanged("Name");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Calories");
                 ingredients.Add("Cane Sugar");
             }
         }
@@ -57,6 +60,21 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             lemon = true;
+            NotifyOfPropertyChanged("Special");
+
+        }
+        /// <summary>
+        /// Special Instructions for drink creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!ice) special.Add("Hold Ice");
+                if (lemon) special.Add("Add Lemon");
+                return special.ToArray();
+            }
         }
     }
 }

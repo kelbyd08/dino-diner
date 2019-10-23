@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DinoDiner.Menu;
 
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for OrderList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OrderList : UserControl
     {
-        public MainWindow()
+        public OrderList()
         {
             InitializeComponent();
-            Order order = new Order(.08);
-            order.Items.Add(new Brontowurst());
-            SteakosaurusBurger sb = new SteakosaurusBurger();
-            sb.HoldPickle();
-            order.Items.Add(sb);
-            DataContext = order;
         }
     }
 }

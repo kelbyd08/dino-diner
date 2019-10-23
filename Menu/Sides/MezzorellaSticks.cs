@@ -13,5 +13,16 @@ namespace DinoDiner.Menu
             ingredients = new List<string>() { "Cheese Product", "Breading", "Vegetable Oil" };
 
         }
+        /// <summary>
+        /// Special Instructions for side creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                return special.ToArray();
+            }
+        }
     }
 }

@@ -25,6 +25,8 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             ingredients.Remove("Whole Wheat Bun");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -33,6 +35,8 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             ingredients.Remove("Lettuce");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -41,6 +45,8 @@ namespace DinoDiner.Menu
         public void HoldTomato()
         {
             ingredients.Remove("Tomato");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -49,6 +55,8 @@ namespace DinoDiner.Menu
         public void HoldOnion()
         {
             ingredients.Remove("Onion");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -57,6 +65,8 @@ namespace DinoDiner.Menu
         public void HoldPickle()
         {
             ingredients.Remove("Pickle");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -65,6 +75,8 @@ namespace DinoDiner.Menu
         public void HoldKetchup()
         {
             ingredients.Remove("Ketchup");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -73,6 +85,8 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             ingredients.Remove("Mustard");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
         
         /// <summary>
@@ -81,6 +95,28 @@ namespace DinoDiner.Menu
         public void HoldMayo()
         {
             ingredients.Remove("Mayo");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
+        }
+        /// <summary>
+        /// Special Instructions for entree creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!ingredients.Contains("Whole Wheat Bun")) special.Add("Hold Bun");
+                if (!ingredients.Contains("Lettuce")) special.Add("Hold Lettuce");
+                if (!ingredients.Contains("Tomato")) special.Add("Hold Tomato");
+                if (!ingredients.Contains("Onion")) special.Add("Hold Onion");
+                if (!ingredients.Contains("Pickle")) special.Add("Hold Pickle");
+                if (!ingredients.Contains("Ketchup")) special.Add("Hold Ketchup");
+                if (!ingredients.Contains("Mustard")) special.Add("Hold Mustard");
+                if (!ingredients.Contains("Mayo")) special.Add("Hold Mayo");
+
+                return special.ToArray();
+            }
         }
     }
 }

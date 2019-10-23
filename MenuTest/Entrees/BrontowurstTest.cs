@@ -1,6 +1,9 @@
+/*  BrontowurstTest.cs
+*   Author: Kelby Dinkel
+*/
 using System.Collections.Generic;
 using Xunit;
-using DinoDiner.Menu.Entrees;
+using DinoDiner.Menu;
 
 namespace MenuTest.Entrees
 {
@@ -54,6 +57,90 @@ namespace MenuTest.Entrees
             Brontowurst bw = new Brontowurst();
             bw.HoldOnion();
             Assert.DoesNotContain<string>("Onion", bw.Ingredients);
+        }
+        [Fact]
+        public void BrontowurstDescriptionIsCorrect()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.Equal("Brontowurst", bw.Description);
+        }
+        [Fact]
+        public  void HoldPepperShouldAddToSpecial()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldPeppers();
+            Assert.Collection<string>(bw.Special, item =>
+            {
+                Assert.Equal("Hold Peppers", item);
+            });
+        }
+        [Fact]
+        public void HoldOnionShouldAddToSpecial()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldOnion();
+            Assert.Collection<string>(bw.Special, item =>
+            {
+                Assert.Equal("Hold Onion", item);
+            });
+        }
+        [Fact]
+        public void HoldBunShouldAddToSpecial()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldBun();
+            Assert.Collection<string>(bw.Special, item =>
+            {
+                Assert.Equal("Hold Bun", item);
+            });
+        }
+        [Fact]
+        public void HoldPeppersAndBunShouldAddToSpecial()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldPeppers();
+            bw.HoldBun();
+            Assert.Collection<string>(bw.Special, item =>
+            {
+                Assert.Equal("Hold Bun", item);
+            },
+            item =>
+            {
+                Assert.Equal("Hold Peppers", item);
+            });
+        }
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Ingredients")]
+        public void HoldingPeppersShouldNotifyChange(string expected)
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, expected, () =>
+            {
+                bw.HoldPeppers();
+            });
+        }
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Ingredients")]
+        public void HoldingOnionShouldNotifyChange(string expected)
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, expected, () =>
+            {
+                bw.HoldOnion();
+            });
+        }
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Ingredients")]
+        public void HoldingBunShouldNotifyChange(string expected)
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, expected, () =>
+            {
+                bw.HoldBun();
+            });
         }
     }
 

@@ -27,6 +27,23 @@ namespace DinoDiner.Menu
         {
             ingredients.Add( "Chicken Nugget" );
             count += 1;
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
+            NotifyOfPropertyChanged("Calories");
+            NotifyOfPropertyChanged("Price");
+
+        }
+        /// <summary>
+        /// Special instructions for entree creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                special.Add(count - base_count + " Extra Nuggets");
+                return special.ToArray();
+            }
         }
     }
 }

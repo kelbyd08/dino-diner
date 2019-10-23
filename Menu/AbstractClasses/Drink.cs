@@ -1,12 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace DinoDiner.Menu
 {
 
-    public abstract class Drink : IMenuItem
+    public abstract class Drink : IMenuItem, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// An event handler for PropertyChanged events for properties such as Ingredients and Special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         protected double[] prices = new double[3];
 
         /// <summary>
@@ -55,15 +65,26 @@ namespace DinoDiner.Menu
         /// <summary>
         /// The price of the current entree. Includes the additional items.
         /// </summary>
-        public double Price
+        public virtual double Price
         {
             get { return prices[ (int)Size ]; }
         }
 
+        Size size = Size.Small;
         /// <summary>
-        /// Current count of the items. This should be the updated count.
+        /// Current size of the item.
         /// </summary>
-        public Size Size = Size.Small;
+        public Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+
+            }
+        }
 
         /// <summary>
         /// Removes Ice from the drink 
@@ -71,6 +92,7 @@ namespace DinoDiner.Menu
         public void HoldIce()
         {
             ice = false;
+            NotifyOfPropertyChanged("Special");
         }
         /// <summary>
         /// Overridden ToString()
@@ -79,6 +101,20 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return Size + extra + " " + name;
+        }
+        /// <summary>
+        /// The description of the current menu item
+        /// </summary>
+        public string Description
+        {
+            get { return this.ToString(); }
+        }
+        /// <summary>
+        /// Special instructions for the entree
+        /// </summary>
+        public abstract string[] Special
+        {
+            get;
         }
     }
 }

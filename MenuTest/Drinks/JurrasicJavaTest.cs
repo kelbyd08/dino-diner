@@ -79,5 +79,74 @@ namespace MenuTest.Drinks
             JurassicJava jj = new JurassicJava();
             Assert.Equal(expectedIngredients, jj.Ingredients);
         }
+        [Theory]
+        [InlineData(Size.Small, false)]
+        [InlineData(Size.Medium, false)]
+        [InlineData(Size.Large, false)]
+        [InlineData(Size.Small, true)]
+        [InlineData(Size.Medium, true)]
+        [InlineData(Size.Large, true)]
+        public void JurassicJavaDescriptionIsCorrect(Size size, bool decaf)
+        {
+            JurassicJava java = new JurassicJava();
+            java.Size = size;
+            java.Decaf = decaf;
+            if (decaf) Assert.Equal($"{size} Decaf Jurassic Java", java.Description);
+            else Assert.Equal($"{size} Jurassic Java", java.Description);
+        }
+        [Theory]
+        [InlineData(false, false)]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        [InlineData(true, true)]
+
+        public void SpecialIsCorrect(bool AddIce, bool LeaveSpace)
+        {
+            List<String> test_lst = new List<string>();
+            JurassicJava java = new JurassicJava();
+            if (AddIce)
+            {
+                java.AddIce();
+                test_lst.Add("Add Ice");
+            }
+            if (LeaveSpace)
+            {
+                java.LeaveRoomForCream();
+                test_lst.Add("Leave Room For Cream");
+            }
+
+            Assert.Equal(test_lst.ToArray(), java.Special);
+        }
+        [Theory]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void SizeChangeShouldNotifyChange(string expected)
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.PropertyChanged(java, expected, () =>
+            {
+                java.Size = Size.Medium;
+            });
+        }
+        [Theory]
+        [InlineData("Special")]
+        public void AddIceShouldNotifyChange(string expected)
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.PropertyChanged(java, expected, () =>
+            {
+                java.AddIce();
+            });
+        }
+        [Theory]
+        [InlineData("Special")]
+        public void RoomForCreamShouldNotifyChange(string expected)
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.PropertyChanged(java, expected, () =>
+            {
+                java.LeaveRoomForCream();
+            });
+        }
     }
 }

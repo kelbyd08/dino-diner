@@ -25,6 +25,8 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
             ingredients.Remove("Ceasar Dressing");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -33,6 +35,8 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             ingredients.Remove("Romaine Lettuce");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -41,6 +45,22 @@ namespace DinoDiner.Menu
         public void HoldCheese()
         {
             ingredients.Remove("Parmesan Cheese");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
+        }
+        /// <summary>
+        /// Special Instructions for entree creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!ingredients.Contains("Ceasar Dressing")) special.Add("Hold Dressing");
+                if (!ingredients.Contains("Romaine Lettuce")) special.Add("Hold Lettuce");
+                if (!ingredients.Contains("Parmesan Cheese")) special.Add("Hold Cheese");
+                return special.ToArray();
+            }
         }
     }
 }

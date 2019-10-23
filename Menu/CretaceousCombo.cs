@@ -6,18 +6,29 @@ using System.Collections.Generic;
 using System.Text;
 using DinoDiner.Menu;
 using System.Linq;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class CretaceousCombo
+    public class CretaceousCombo : IMenuItem, INotifyPropertyChanged
     {
-        public CretaceousCombo( Entree entree )
+        public CretaceousCombo(Entree entree)
         {
             Entree = entree;
             Side = new Fryceritops();
-            Drink = new Sodasaurus();
+            drink = new Sodasaurus();
         }
-        public Entree Entree { get; set; }
+        private Entree entree;
+        public Entree Entree {
+            get { return entree; }
+            protected set{
+                entree = value;
+                entree.PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
+                {
+                    NotifyOfPropertyChanged(args.PropertyName);
+                };
+            }
+        }
         Side side;
         public Side Side
         {
@@ -25,9 +36,26 @@ namespace DinoDiner.Menu
             set {
                 this.side = value;
                 this.side.Size = this.size;
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Side");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Calories");
             }
         }
-        public Drink Drink { get; set;  }
+        Drink drink;
+        public Drink Drink
+        {
+            get { return drink; }
+            set {
+                drink = value;
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Drink");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Special");
+            }
+        }
 
         public double Price
         {
@@ -46,6 +74,15 @@ namespace DinoDiner.Menu
         }
 
         public Size size = Size.Small;
+
+        /// <summary>
+        /// Event handler for property changed events
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public Size Size
         {
             get { return size; }
@@ -54,6 +91,10 @@ namespace DinoDiner.Menu
                 size = value;
                 Drink.Size = (Size)value;
                 Side.Size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Calories");
             }
         }
 
@@ -72,6 +113,28 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return Entree.ToString() + " Combo";
+        }
+
+        public String[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                special.AddRange(Entree.Special);
+                special.Add(Side.Description);
+                special.AddRange(Side.Special);
+                special.Add(Drink.Description);
+                special.AddRange(Drink.Special);
+                return special.ToArray();
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
         }
     }
 }

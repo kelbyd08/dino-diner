@@ -25,6 +25,8 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             ingredients.Remove("Whole Wheat Bun");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -33,6 +35,8 @@ namespace DinoDiner.Menu
         public void HoldPickle()
         {
             ingredients.Remove("Pickle");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -41,6 +45,8 @@ namespace DinoDiner.Menu
         public void HoldKetchup()
         {
             ingredients.Remove("Ketchup");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -49,6 +55,24 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             ingredients.Remove("Mustard");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
+        }
+        /// <summary>
+        /// Special Instructions for entree creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!ingredients.Contains("Whole Wheat Bun")) special.Add("Hold Bun");
+                if (!ingredients.Contains("Pickle")) special.Add("Hold Pickle");
+                if (!ingredients.Contains("Ketchup")) special.Add("Hold Ketchup");
+                if (!ingredients.Contains("Mustard")) special.Add("Hold Mustard");
+
+                return special.ToArray();
+            }
         }
     }
 }

@@ -80,5 +80,58 @@ namespace MenuTest.Drinks
             Assert.Equal(expectedIngredients, wtr.Ingredients);
 
         }
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void WaterDescriptionIsCorrect(Size size)
+        {
+            Water water = new Water();
+            water.Size = size;
+            Assert.Equal($"{size} Water", water.Description);
+        }
+                [Theory]
+        [InlineData(false, false)]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        [InlineData(true, true)]
+
+        public void SpecialIsCorrect(bool HoldIce, bool AddLemon)
+        {
+            List<String> test_lst = new List<string>();
+            Water water = new Water();
+            if (HoldIce)
+            {
+                water.HoldIce();
+                test_lst.Add("Hold Ice");
+            }
+            if (AddLemon)
+            {
+                water.AddLemon();
+                test_lst.Add("Add Lemon");
+            }
+
+            Assert.Equal(test_lst.ToArray(), water.Special);
+        }
+        [Theory]
+        [InlineData("Special")]
+        public void HoldIceShouldNotifyChange(string expected)
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, expected, () =>
+            {
+                water.HoldIce();
+            });
+        }
+        [Theory]
+        [InlineData("Special")]
+        public void AddLemonShouldNotifyChange(string expected)
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, expected, () =>
+            {
+                water.AddLemon();
+            });
+        }
     }
 }

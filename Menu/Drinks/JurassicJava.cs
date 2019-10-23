@@ -33,6 +33,7 @@ namespace DinoDiner.Menu
             get { return decaf; }
             set
             {
+                NotifyOfPropertyChanged("Name");
                 if (value)
                     extra = " Decaf";
                 else
@@ -46,6 +47,7 @@ namespace DinoDiner.Menu
         public void LeaveRoomForCream()
         {
             spaceForCream = true;
+            NotifyOfPropertyChanged("Special");
         }
         /// <summary>
         /// Adds ice into the drink 
@@ -53,6 +55,20 @@ namespace DinoDiner.Menu
         public void AddIce()
         {
             ice = true;
+            NotifyOfPropertyChanged("Special");
+        }
+        /// <summary>
+        /// Special Instructions for drink creation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (ice) special.Add("Add Ice");
+                if (spaceForCream) special.Add("Leave Room For Cream");
+                return special.ToArray();
+            }
         }
     }
 }
