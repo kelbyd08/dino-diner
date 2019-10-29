@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
+using System.ComponentModel;
+using System.Collections.Specialized;
 
 namespace DinoDiner.Menu
 {
-    public class Order
+    public class Order: INotifyPropertyChanged
     {
         /// <summary>
         /// Constructor for the order
@@ -18,6 +20,7 @@ namespace DinoDiner.Menu
         public Order( double TaxRate)
         {
             SalesTaxRate = TaxRate;
+            Items.CollectionChanged += CollectionChangedHandler;
         }
         /// <summary>
         /// Items within the current order.
@@ -32,9 +35,48 @@ namespace DinoDiner.Menu
         /// </summary>
         public double SubtotalCost
         {
-            get { return Items.Sum(item => item.Price); }
+            get {
+               
+                return Items.Sum(item => item.Price) > 0 ? Items.Sum(item => item.Price) : 0;  }
         }
         double taxRate;
+
+        void CollectionChangedHandler(object sender, NotifyCollectionChangedEventArgs args)
+        {
+            if( args.Action == NotifyCollectionChangedAction.Add)
+            {
+                if( args.NewItems[ 0 ] is Entree entree)
+                {
+                    entree.PropertyChanged += listItemPriceChanged;
+                }
+                else if (args.NewItems[0] is Drink drink)
+                {
+                    drink.PropertyChanged += listItemPriceChanged;
+                }
+                else if (args.NewItems[0] is Side side)
+                {
+                    side.PropertyChanged += listItemPriceChanged;
+                }
+                else if (args.NewItems[0] is CretaceousCombo combo)
+                {
+                    combo.PropertyChanged += listItemPriceChanged;
+                }
+            }
+            NotifyOfPropertyChanged("SubtotalCost");
+        }
+
+        void listItemPriceChanged( object sender, PropertyChangedEventArgs args)
+        {
+            if (args.PropertyName == "Price")
+                NotifyOfPropertyChanged("SubtotalCost");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         /// <summary>
         /// Current tax Rate
         /// </summary>

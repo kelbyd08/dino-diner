@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DinoDiner.Menu;
+using PointOfSale.Events;
 
 namespace PointOfSale
 {
@@ -25,11 +26,22 @@ namespace PointOfSale
         {
             InitializeComponent();
             Order order = new Order(.08);
-            order.Items.Add(new Brontowurst());
-            SteakosaurusBurger sb = new SteakosaurusBurger();
-            sb.HoldPickle();
-            order.Items.Add(sb);
             DataContext = order;
+        }
+
+        private void OrderScreen_SideClick(object sender, OrderClickEventArgs e)
+        {
+            SideSelection sidePage = new SideSelection( e.SelectedItem as Side, true, e.Index);
+            OrderWindow.Navigate(sidePage);
+        }
+        private void OrderScreen_DrinkClick( object sender, OrderClickEventArgs e)
+        {
+            DrinkSelection drinkPage = new DrinkSelection(e.SelectedItem as Drink, true, e.Index);
+            OrderWindow.Navigate(drinkPage);
+        }
+        private void OnReturnToCategory(object sender, RoutedEventArgs args)
+        {
+            OrderWindow.Navigate(new MenuCategorySelection());
         }
     }
 }

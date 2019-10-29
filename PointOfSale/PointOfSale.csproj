@@ -54,6 +54,9 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="CustomisePrehistoricPBJ.xaml.cs">
+      <DependentUpon>CustomisePrehistoricPBJ.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomizeCombo.xaml.cs">
       <DependentUpon>CustomizeCombo.xaml</DependentUpon>
     </Compile>
@@ -63,6 +66,7 @@
     <Compile Include="EntreeSelection.xaml.cs">
       <DependentUpon>EntreeSelection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events\OrderClickEventArgs.cs" />
     <Compile Include="FlavorSelection.xaml.cs">
       <DependentUpon>FlavorSelection.xaml</DependentUpon>
     </Compile>
@@ -73,6 +77,10 @@
       <DependentUpon>SideSelection.xaml</DependentUpon>
     </Compile>
     <Page Include="ComboSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomisePrehistoricPBJ.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

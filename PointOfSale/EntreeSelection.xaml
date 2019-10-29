@@ -11,50 +11,51 @@
     <WrapPanel>
         <WrapPanel.Resources>
             <Style TargetType="Button">
-                <Setter Property="MinWidth" Value="140"/>
+                <Setter Property="MinWidth" Value="150"/>
                 <Setter Property="MinHeight" Value="140"/>
                 <Setter Property="BorderBrush" Value="Gray"/>
                 <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Margin" Value="2"/>
             </Style>
         </WrapPanel.Resources>
-        <Button >
+        <Button Click="BrontoClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-01.png"></Image>
                 <TextBlock>Brontowurst</TextBlock>
             </StackPanel>
         </Button>
-        <Button >
+        <Button Click="DinoClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-02.png"></Image>
 
                 <TextBlock>Dino-Nuggets</TextBlock>
             </StackPanel>
         </Button>
-        <Button >
+        <Button Click="PrehistoricClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-05.png"></Image>
                 <TextBlock>Steakosaurus</TextBlock>
             </StackPanel>
         </Button>
-        <Button >
+        <Button Click="PrehistoricClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-06.png"></Image>
                 <TextBlock>T-Rex King Burger</TextBlock>
             </StackPanel>
         </Button>
-        <Button >
+        <Button Click="PrehistoricClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-03.png"></Image>
                 <TextBlock>Prehistoric PB&amp;J</TextBlock>
             </StackPanel>
         </Button>
-        <Button >
+        <Button Click="PterodactylClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-04.png"></Image>
                 <TextBlock>Pterodactyl Wings</TextBlock>
             </StackPanel>
         </Button>
-        <Button >
+        <Button Click="VelociClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-07.png"></Image>
                 <TextBlock>Velociwrap</TextBlock>

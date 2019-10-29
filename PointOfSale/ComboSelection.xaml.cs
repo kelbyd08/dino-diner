@@ -27,6 +27,7 @@ namespace PointOfSale
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// Click handler for any combo button. 
         /// </summary>

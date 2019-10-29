@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:PointOfSale"
         xmlns:menu="clr-namespace:DinoDiner.Menu;assembly=Menu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <DockPanel>
-        <local:OrderList DockPanel.Dock="Right" Width="200" />
-
-        <Frame Source="MenuCategorySelection.xaml"></Frame>
+     
+        <local:OrderList x:Name="OrderScreen" DockPanel.Dock="Right" Width="200" SideClick="OrderScreen_SideClick" DrinkClick="OrderScreen_DrinkClick"/>
+        <Button Click="OnReturnToCategory" DockPanel.Dock="Bottom">Return To Category Selection</Button>
+        <Frame Name="OrderWindow" Source="MenuCategorySelection.xaml"></Frame>
     </DockPanel>
 </Window>

@@ -12,7 +12,7 @@ namespace DinoDiner.Menu
     /// </summary>
     public enum SodasaurusFlavor
     {
-        Cola,
+        ola,
         Orange,
         Vanilla,
         Chocolate,
@@ -31,7 +31,7 @@ namespace DinoDiner.Menu
                 extra = " " + value.ToString();
                 _flavor = value;
                 NotifyOfPropertyChanged("Name");
-
+                NotifyOfPropertyChanged("Description");
             }
         }
         /// <summary>

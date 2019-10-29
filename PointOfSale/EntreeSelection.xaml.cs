@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -24,5 +25,46 @@ namespace PointOfSale
         {
             InitializeComponent();
         }
+        private void SwitchPage()
+        {
+            ((Order)App.Current.MainWindow.DataContext).Items.Add(DataContext as Entree);
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
+        private void BrontoClick(object sender, RoutedEventArgs args)
+        {
+            DataContext = new Brontowurst();
+            SwitchPage();
+        }
+        private void DinoClick(object sender, RoutedEventArgs args)
+        {
+            DataContext = new DinoNuggets();
+            SwitchPage();
+        }
+        private void PrehistoricClick(object sender, RoutedEventArgs args)
+        {
+            DataContext = new PrehistoricPBJ();
+            SwitchPage();
+        }
+        private void PterodactylClick(object sender, RoutedEventArgs args)
+        {
+            DataContext = new PterodactylWings();
+            SwitchPage();
+        }
+        private void SteakClick(object sender, RoutedEventArgs args)
+        {
+            DataContext = new SteakosaurusBurger();
+            SwitchPage();
+        }
+        private void TRexClick(object sender, RoutedEventArgs args)
+        {
+            DataContext = new TRexKingBurger();
+            SwitchPage();
+        }
+        private void VelociClick(object sender, RoutedEventArgs args)
+        {
+            DataContext = new VelociWrap();
+            SwitchPage();
+        }
     }
+
 }

@@ -17,13 +17,13 @@
                     <Setter Property="BorderThickness" Value="2"/>
                 </Style>
             </StackPanel.Resources>
-            <RadioButton>Cola</RadioButton>
-            <RadioButton>Orange</RadioButton>
-            <RadioButton>Vanilla</RadioButton>
-            <RadioButton>Chocolate</RadioButton>
-            <RadioButton>Root Beer</RadioButton>
-            <RadioButton>Cherry</RadioButton>
-            <RadioButton>Lime</RadioButton>
+            <RadioButton Click="OnFlavorChange">Cola</RadioButton>
+            <RadioButton Click="OnFlavorChange">Orange</RadioButton>
+            <RadioButton Click="OnFlavorChange">Vanilla</RadioButton>
+            <RadioButton Click="OnFlavorChange">Chocolate</RadioButton>
+            <RadioButton Click="OnFlavorChange">Root Beer</RadioButton>
+            <RadioButton Click="OnFlavorChange">Cherry</RadioButton>
+            <RadioButton Click="OnFlavorChange">Lime</RadioButton>
         </StackPanel>  
     </Grid>
 </Page>

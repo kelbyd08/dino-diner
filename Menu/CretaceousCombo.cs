@@ -21,7 +21,7 @@ namespace DinoDiner.Menu
         private Entree entree;
         public Entree Entree {
             get { return entree; }
-            protected set{
+            set{
                 entree = value;
                 entree.PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
                 {

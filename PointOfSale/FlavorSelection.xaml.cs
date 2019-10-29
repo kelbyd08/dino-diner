@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -20,9 +21,22 @@ namespace PointOfSale
     /// </summary>
     public partial class FlavorSelection : Page
     {
-        public FlavorSelection()
+        bool editing;
+        int index;
+        public FlavorSelection(bool edit = false, int index = 0)
         {
+            editing = edit;
+            this.index = index;
             InitializeComponent();
+        }
+        private void OnFlavorChange( object sender, RoutedEventArgs args)
+        {
+            if( sender is RadioButton btn)
+            {
+                ((Sodasaurus)DataContext).flavor = (DinoDiner.Menu.SodasaurusFlavor)Enum.Parse(typeof(DinoDiner.Menu.SodasaurusFlavor), btn.Content.ToString().Replace(" ", "") );
+                NavigationService.Navigate(new DrinkSelection((Drink)DataContext, editing, index));
+
+            }
         }
     }
 }

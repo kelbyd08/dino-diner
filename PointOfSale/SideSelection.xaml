@@ -12,34 +12,35 @@
             <ColumnDefinition Width="400" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <WrapPanel>
+        <WrapPanel VerticalAlignment="Center">
             <WrapPanel.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="MinWidth" Value="200"/>
+                    <Setter Property="MinWidth" Value="195"/>
                     <Setter Property="MinHeight" Value="200"/>
                     <Setter Property="BorderBrush" Value="Gray"/>
                     <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Margin" Value="2"/>
                 </Style>
             </WrapPanel.Resources>
-            <Button>
+            <Button Click="FryClick">
                 <StackPanel>
                     <Image Width="150" Source="Images/DinoDiner-08.png"></Image>
                     <TextBlock>Fryceritops</TextBlock>
                 </StackPanel>
             </Button>
-            <Button>
+            <Button Click="TotClick">
                 <StackPanel>
                     <Image Width="150" Source="Images/DinoDiner-11.png"></Image>
                     <TextBlock>Triceritots</TextBlock>
                 </StackPanel>
             </Button>
-            <Button>
+            <Button Click="MacNCheeseClick">
                 <StackPanel>
                     <Image Width="150" Source="Images/DinoDiner-09.png"></Image>
                     <TextBlock>Meteor Mac &amp; Cheese</TextBlock>
                 </StackPanel>
             </Button>
-            <Button>
+            <Button Click="MezStickClick">
                 <StackPanel>
                     <Image Width="150" Source="Images/DinoDiner-10.png"></Image>
                     <TextBlock>Mozzerella Sticks</TextBlock>
@@ -48,13 +49,16 @@
         </WrapPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <StackPanel.Resources>
-                <Style TargetType="RadioButton">
+                <Style TargetType="Button">
                     <Setter Property="FontSize" Value="25"></Setter>
+                    <Setter Property="Height" Value="80"></Setter>
+                    <Setter Property="Margin" Value="3"/>
                 </Style>
             </StackPanel.Resources>
-            <RadioButton>Small</RadioButton>
-            <RadioButton>Medium</RadioButton>
-            <RadioButton>Large</RadioButton>
+            <Image Name="Selected" Width="150" Height="150" Margin="4"></Image>
+            <Button  Click="SizeChecked">Small</Button>
+            <Button  Click="SizeChecked">Medium</Button>
+            <Button  Click="SizeChecked">Large</Button>
         </StackPanel>
     </Grid>
 </Page>
