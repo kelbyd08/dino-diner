@@ -16,46 +16,43 @@ using DinoDiner.Menu;
 
 namespace PointOfSale
 {
-    public enum PreviousPage
-    {
-        Entree,
-        Combo
-    };
     /// <summary>
     /// Interaction logic for CustomisePrehistoricPBJ.xaml
     /// </summary>
-    public partial class CustomisePrehistoricPBJ : Page
+    public partial class CustomizeSteakosaurus : Page
     {
         private PreviousPage page;
-        private PrehistoricPBJ pbj;
+        private SteakosaurusBurger bgr;
         private CretaceousCombo cmbo;
-        public CustomisePrehistoricPBJ(PrehistoricPBJ pbj)
+        public CustomizeSteakosaurus(SteakosaurusBurger bgr)
         {
             this.page = page;
-            this.pbj = pbj;
+            this.bgr = bgr;
             InitializeComponent();
         }
 
-        public CustomisePrehistoricPBJ( CretaceousCombo cmbo )
+        public CustomizeSteakosaurus( CretaceousCombo cmbo )
         {
             InitializeComponent();
             this.cmbo = cmbo;
+            bgr = cmbo.Entree as SteakosaurusBurger;
             ((Order)App.Current.MainWindow.DataContext).Items.Add(cmbo);
         }
-        private void OnHoldPeanutButter(object sender, RoutedEventArgs args)
+        private void OnHoldBun(object sender, RoutedEventArgs args)
         {
-            if (cmbo != null)
-                (cmbo.Entree as PrehistoricPBJ).HoldPeanutButter();
-            else
-                pbj.HoldPeanutButter();
+            bgr.HoldBun();
         }
-
-        private void OnHoldJelly(object sender, RoutedEventArgs args)
+        private void OnHoldPickle(object sender, RoutedEventArgs args)
         {
-            if (cmbo != null)
-                (cmbo.Entree as PrehistoricPBJ).HoldJelly();
-            else
-                pbj.HoldJelly();
+            bgr.HoldPickle();
+        }
+        private void OnHoldKetchup(object sender, RoutedEventArgs args)
+        {
+            bgr.HoldKetchup();
+        }
+        private void OnHoldMustard(object sender, RoutedEventArgs args)
+        {
+            bgr.HoldMustard();
         }
         private void OnDone(object secnder, RoutedEventArgs args)
         {

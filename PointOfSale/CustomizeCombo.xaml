@@ -40,9 +40,9 @@
                     <Setter Property="FontSize" Value="25"></Setter>
                 </Style>
             </StackPanel.Resources>
-            <RadioButton >Large</RadioButton>
-            <RadioButton >Medium</RadioButton>
-            <RadioButton >Small</RadioButton>
+            <RadioButton Click="OnSizeChange" >Large</RadioButton>
+            <RadioButton Click="OnSizeChange">Medium</RadioButton>
+            <RadioButton Click="OnSizeChange">Small</RadioButton>
         </StackPanel>
     </Grid>
 </Page>

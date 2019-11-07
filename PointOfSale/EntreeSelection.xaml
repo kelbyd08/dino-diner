@@ -31,13 +31,13 @@
                 <TextBlock>Dino-Nuggets</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="PrehistoricClick">
+        <Button Click="SteakClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-05.png"></Image>
                 <TextBlock>Steakosaurus</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="PrehistoricClick">
+        <Button Click="TRexClick">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-06.png"></Image>
                 <TextBlock>T-Rex King Burger</TextBlock>

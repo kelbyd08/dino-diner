@@ -16,47 +16,34 @@ using DinoDiner.Menu;
 
 namespace PointOfSale
 {
-    public enum PreviousPage
-    {
-        Entree,
-        Combo
-    };
     /// <summary>
     /// Interaction logic for CustomisePrehistoricPBJ.xaml
     /// </summary>
-    public partial class CustomisePrehistoricPBJ : Page
+    public partial class CustomizeDinonuggets : Page
     {
         private PreviousPage page;
-        private PrehistoricPBJ pbj;
+        private DinoNuggets nug;
         private CretaceousCombo cmbo;
-        public CustomisePrehistoricPBJ(PrehistoricPBJ pbj)
+        public CustomizeDinonuggets(DinoNuggets nug)
         {
             this.page = page;
-            this.pbj = pbj;
+            this.nug = nug;
             InitializeComponent();
         }
 
-        public CustomisePrehistoricPBJ( CretaceousCombo cmbo )
+        public CustomizeDinonuggets( CretaceousCombo cmbo )
         {
             InitializeComponent();
             this.cmbo = cmbo;
+            this.nug = cmbo.Entree as DinoNuggets;
             ((Order)App.Current.MainWindow.DataContext).Items.Add(cmbo);
         }
-        private void OnHoldPeanutButter(object sender, RoutedEventArgs args)
+
+        private void OnAddNugget(object sender, RoutedEventArgs args)
         {
-            if (cmbo != null)
-                (cmbo.Entree as PrehistoricPBJ).HoldPeanutButter();
-            else
-                pbj.HoldPeanutButter();
+            nug.AddNugget();
         }
 
-        private void OnHoldJelly(object sender, RoutedEventArgs args)
-        {
-            if (cmbo != null)
-                (cmbo.Entree as PrehistoricPBJ).HoldJelly();
-            else
-                pbj.HoldJelly();
-        }
         private void OnDone(object secnder, RoutedEventArgs args)
         {
             if( cmbo != null)

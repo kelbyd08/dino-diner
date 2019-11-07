@@ -25,45 +25,70 @@ namespace PointOfSale
         {
             InitializeComponent();
         }
-        private void SwitchPage()
+        private void SwitchPage(int type)
         {
             ((Order)App.Current.MainWindow.DataContext).Items.Add(DataContext as Entree);
-            NavigationService.Navigate(new MenuCategorySelection());
+            switch( type )
+            {
+                case 0:
+                    NavigationService.Navigate(new CustomizeBrontowurst(DataContext as Brontowurst));
+                    break;
+                case 1:
+                    NavigationService.Navigate(new CustomizeDinonuggets(DataContext as DinoNuggets));
+
+                    break;
+                case 2:
+                    NavigationService.Navigate(new CustomisePrehistoricPBJ(DataContext as PrehistoricPBJ));
+
+                    break;
+                case 3:
+                    NavigationService.Navigate(new MenuCategorySelection());
+                    break;
+                case 4:
+                    NavigationService.Navigate(new CustomizeSteakosaurus(DataContext as SteakosaurusBurger));
+                    break;
+                case 5:
+                    NavigationService.Navigate(new CustomizeTRex(DataContext as TRexKingBurger));
+                    break;
+                case 6:
+                    NavigationService.Navigate(new CustomizeVelociwrap(DataContext as VelociWrap));
+                    break;
+            }
         }
         private void BrontoClick(object sender, RoutedEventArgs args)
         {
             DataContext = new Brontowurst();
-            SwitchPage();
+            SwitchPage(0);
         }
         private void DinoClick(object sender, RoutedEventArgs args)
         {
             DataContext = new DinoNuggets();
-            SwitchPage();
+            SwitchPage(1);
         }
         private void PrehistoricClick(object sender, RoutedEventArgs args)
         {
             DataContext = new PrehistoricPBJ();
-            SwitchPage();
+            SwitchPage(2);
         }
         private void PterodactylClick(object sender, RoutedEventArgs args)
         {
             DataContext = new PterodactylWings();
-            SwitchPage();
+            SwitchPage(3);
         }
         private void SteakClick(object sender, RoutedEventArgs args)
         {
             DataContext = new SteakosaurusBurger();
-            SwitchPage();
+            SwitchPage(4);
         }
         private void TRexClick(object sender, RoutedEventArgs args)
         {
             DataContext = new TRexKingBurger();
-            SwitchPage();
+            SwitchPage(5);
         }
         private void VelociClick(object sender, RoutedEventArgs args)
         {
             DataContext = new VelociWrap();
-            SwitchPage();
+            SwitchPage(6);
         }
     }
 

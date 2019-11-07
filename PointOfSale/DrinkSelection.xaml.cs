@@ -35,6 +35,7 @@ namespace PointOfSale
         };
         bool edit = false;
         int index;
+        private CretaceousCombo cmbo;
         public DrinkSelection(Drink drink = null, bool edit = false, int index = 0)
         {
             DataContext = drink;
@@ -71,6 +72,13 @@ namespace PointOfSale
                 SelectedDrink.Source = img;
             }
         }
+
+        public DrinkSelection( CretaceousCombo cmbo )
+        {
+            InitializeComponent();
+            this.cmbo = cmbo;
+        }
+
         private void show_soda()
         {
             //Delete all objects from the additional options panel
@@ -222,7 +230,11 @@ namespace PointOfSale
                         ((Drink)DataContext).Size = DinoDiner.Menu.Size.Large;
                         break;
                 }
-                if (!edit)
+                if ( cmbo != null )
+                {
+                    cmbo.Drink = (Drink)DataContext;
+                }
+                else if (!edit)
                 {
                     ((Order)App.Current.MainWindow.DataContext).Items.Add((Drink)DataContext);
                 }
@@ -230,7 +242,10 @@ namespace PointOfSale
                 {
                     ((Order)App.Current.MainWindow.DataContext).Items[index] = (Drink)DataContext;
                 }
-                NavigationService.Navigate(new MenuCategorySelection());
+                if (cmbo == null)
+                    NavigationService.Navigate(new MenuCategorySelection());
+                else
+                    NavigationService.Navigate(new CustomizeCombo(cmbo));
             }
         }
     }

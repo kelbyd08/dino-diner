@@ -626,11 +626,11 @@ namespace MenuTest
         [InlineData("SubtotalCost")]
         public void OrderAddingItemsShouldNotifyPropertyChange(string propertyName)
         {
-            Order order = new Order();
+            Order order = new Order(1.75f);
             MockOrderItem item = new MockOrderItem();
             Assert.PropertyChanged(order, propertyName, () =>
             {
-                order.Add(item);
+                order.Items.Add(item);
             });
         }
 
@@ -641,12 +641,12 @@ namespace MenuTest
         [InlineData("SubtotalCost")]
         public void OrderRemovingItemsShouldNotifyPropertyChange(string propertyName)
         {
-            Order order = new Order();
+            Order order = new Order(2f);
             MockOrderItem item = new MockOrderItem();
-            order.Add(item);
+            order.Items.Add(item);
             Assert.PropertyChanged(order, propertyName, () =>
             {
-                order.Remove(item);
+                order.Items.Remove(item);
             });
         }
 
@@ -656,9 +656,9 @@ namespace MenuTest
         [InlineData("SubtotalCost")]
         public void OrderItemMutatingShouldNotifyPropertyChange(string propertyName)
         {
-            Order order = new Order();
+            Order order = new Order(2);
             MockOrderItem item = new MockOrderItem();
-            order.Add(item);
+            order.Items.Add(item);
             Assert.PropertyChanged(order, propertyName, () =>
             {
                 item.Mutate();

@@ -12,7 +12,7 @@ namespace DinoDiner.Menu
     /// </summary>
     public enum SodasaurusFlavor
     {
-        ola,
+        Cola,
         Orange,
         Vanilla,
         Chocolate,
@@ -24,7 +24,7 @@ namespace DinoDiner.Menu
     public class Sodasaurus : Drink
     {
         SodasaurusFlavor _flavor;
-        public SodasaurusFlavor flavor
+        public SodasaurusFlavor Flavor
         {
             get { return _flavor; }
             set {

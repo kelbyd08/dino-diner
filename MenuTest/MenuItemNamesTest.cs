@@ -157,7 +157,7 @@ namespace MenuTest
         {
             Sodasaurus soda = new Sodasaurus();
             soda.Size = size;
-            soda.flavor = flavor;
+            soda.Flavor = flavor;
             Assert.Equal($"{size} {flavor} Sodasaurus", soda.ToString());
         }
 

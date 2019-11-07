@@ -54,9 +54,9 @@ namespace MenuTest.Drinks
             Sodasaurus soda = new Sodasaurus();
             for ( uint i = 0; i < Enum.GetNames( typeof( expectedFlavors ) ).Length; i++)
             {
-                soda.flavor = (SodasaurusFlavor)i;
+                soda.Flavor = (SodasaurusFlavor)i;
                 Assert.Equal( Enum.GetNames( typeof( expectedFlavors ) )[ i ]
-                            , soda.flavor.ToString () );
+                            , soda.Flavor.ToString () );
             }
         }
         /// <summary>
@@ -116,7 +116,7 @@ namespace MenuTest.Drinks
         {
             Sodasaurus soda = new Sodasaurus();
             soda.Size = size;
-            soda.flavor = flavor;
+            soda.Flavor = flavor;
             Assert.Equal($"{size} {flavor} Sodasaurus", soda.Description);
         }
         [Theory]

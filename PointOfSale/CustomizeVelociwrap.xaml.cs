@@ -16,47 +16,43 @@ using DinoDiner.Menu;
 
 namespace PointOfSale
 {
-    public enum PreviousPage
-    {
-        Entree,
-        Combo
-    };
     /// <summary>
     /// Interaction logic for CustomisePrehistoricPBJ.xaml
     /// </summary>
-    public partial class CustomisePrehistoricPBJ : Page
+    public partial class CustomizeVelociwrap : Page
     {
         private PreviousPage page;
-        private PrehistoricPBJ pbj;
+        private VelociWrap vw;
         private CretaceousCombo cmbo;
-        public CustomisePrehistoricPBJ(PrehistoricPBJ pbj)
+        public CustomizeVelociwrap(VelociWrap vw)
         {
             this.page = page;
-            this.pbj = pbj;
+            this.vw = vw;
             InitializeComponent();
         }
 
-        public CustomisePrehistoricPBJ( CretaceousCombo cmbo )
+        public CustomizeVelociwrap( CretaceousCombo cmbo )
         {
             InitializeComponent();
             this.cmbo = cmbo;
+            vw = cmbo.Entree as VelociWrap;
             ((Order)App.Current.MainWindow.DataContext).Items.Add(cmbo);
         }
-        private void OnHoldPeanutButter(object sender, RoutedEventArgs args)
+        private void OnHoldDressing(object sender, RoutedEventArgs args)
         {
-            if (cmbo != null)
-                (cmbo.Entree as PrehistoricPBJ).HoldPeanutButter();
-            else
-                pbj.HoldPeanutButter();
+            vw.HoldDressing();
         }
 
-        private void OnHoldJelly(object sender, RoutedEventArgs args)
+        private void OnHoldLettuce(object sender, RoutedEventArgs args)
         {
-            if (cmbo != null)
-                (cmbo.Entree as PrehistoricPBJ).HoldJelly();
-            else
-                pbj.HoldJelly();
+            vw.HoldLettuce();
         }
+
+        private void OnHoldCheese(object sender, RoutedEventArgs args)
+        {
+            vw.HoldCheese();
+        }
+
         private void OnDone(object secnder, RoutedEventArgs args)
         {
             if( cmbo != null)

@@ -1,0 +1,34 @@
+﻿<Page x:Class="PointOfSale.CustomizeTRex"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomisePrehistoricPBJ">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Click="OnHoldBun">Hold Bun</Button>
+        <Button Click="OnHoldLettuce" Grid.Column="1">Hold Lettuce</Button>
+        <Button Click="OnHoldTomato" Grid.Column="2">Hold Tomato</Button>
+        <Button Click="OnHoldOnion" Grid.Row="1" Grid.Column="0">Hold Onion</Button>
+        <Button Click="OnHoldPickle" Grid.Row="1" Grid.Column="1">Hold Pickle</Button>
+        <Button Click="OnHoldKetchup" Grid.Row="1" Grid.Column="2">Hold Ketchup</Button>
+        <Button Click="OnHoldMustard" Grid.Row="2">Hold Mustard</Button>
+        <Button Click="OnHoldMayo" Grid.Row="2" Grid.Column="2">Hold Mayo</Button>
+
+        <Button Click="OnDone" Grid.Row="3" Grid.ColumnSpan="3">Done</Button>
+    </Grid>
+</Page>

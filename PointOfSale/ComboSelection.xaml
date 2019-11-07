@@ -17,44 +17,44 @@
                 <Setter Property="BorderThickness" Value="2"/>
             </Style>
         </WrapPanel.Resources>
-        <Button Click="CustomizeCombo">
+        <Button Click="CustomizeCombo" Tag="0">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-01.png"></Image>
                 <TextBlock>Brontowurst Combo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="CustomizeCombo">
+        <Button Click="CustomizeCombo" Tag="1">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-02.png"></Image>
 
                 <TextBlock>Dino-Nuggets Combo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="CustomizeCombo">
+        <Button Click="CustomizeCombo" Tag="2">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-05.png"></Image>
                 <TextBlock>Steakosaurus Combo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="CustomizeCombo">
+        <Button Click="CustomizeCombo" Tag="3">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-06.png"></Image>
                 <TextBlock>T-Rex King Burger Combo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="CustomizeCombo">
+        <Button Click="CustomizeCombo" Tag="4">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-03.png"></Image>
                 <TextBlock>Prehistoric PB&amp;J Combo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="CustomizeCombo">
+        <Button Click="CustomizeCombo" Tag="5">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-04.png"></Image>
                 <TextBlock>Pterodactyl Wings Combo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Click="CustomizeCombo">
+        <Button Click="CustomizeCombo" Tag="6">
             <StackPanel>
                 <Image Width="100" Source="Images/DinoDiner-07.png"></Image>
                 <TextBlock>Velociwrap Combo</TextBlock>

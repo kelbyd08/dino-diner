@@ -61,14 +61,30 @@ namespace DinoDiner.Menu
                 {
                     combo.PropertyChanged += listItemPriceChanged;
                 }
+                else if( args.NewItems[0] is IOrderItem item )
+                {
+                    item.PropertyChanged += listItemPriceChanged;
+                }
             }
             NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("TotalCost");
         }
 
-        void listItemPriceChanged( object sender, PropertyChangedEventArgs args)
+        void listItemPriceChanged(object sender, PropertyChangedEventArgs args)
         {
             if (args.PropertyName == "Price")
                 NotifyOfPropertyChanged("SubtotalCost");
+            else if (args.PropertyName == "SubtotalCost" ||
+                     args.PropertyName == "TotalCost"   ||
+                     args.PropertyName == "SalesTaxCost")
+            {
+                NotifyOfPropertyChanged("SubtotalCost");
+                NotifyOfPropertyChanged("TotalCost");
+                NotifyOfPropertyChanged("SalesTaxCost");
+
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

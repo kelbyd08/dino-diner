@@ -33,7 +33,7 @@ namespace PointOfSale
         {
             if( sender is RadioButton btn)
             {
-                ((Sodasaurus)DataContext).flavor = (DinoDiner.Menu.SodasaurusFlavor)Enum.Parse(typeof(DinoDiner.Menu.SodasaurusFlavor), btn.Content.ToString().Replace(" ", "") );
+                ((Sodasaurus)DataContext).Flavor = (DinoDiner.Menu.SodasaurusFlavor)Enum.Parse(typeof(DinoDiner.Menu.SodasaurusFlavor), btn.Content.ToString().Replace(" ", "") );
                 NavigationService.Navigate(new DrinkSelection((Drink)DataContext, editing, index));
 
             }

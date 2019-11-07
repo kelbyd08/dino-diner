@@ -23,11 +23,18 @@ namespace PointOfSale
     {
         bool edit = false;
         int index;
+        CretaceousCombo cmbo;
         public SideSelection( Side side = null, bool edit = false, int index = 0 )
         {
             DataContext = side;
             this.edit = edit;
             this.index = index;
+            InitializeComponent();
+        }
+
+        public SideSelection( CretaceousCombo cmbo )
+        {
+            this.cmbo = cmbo;
             InitializeComponent();
         }
 
@@ -57,7 +64,11 @@ namespace PointOfSale
                         ((Side)DataContext).Size = DinoDiner.Menu.Size.Large;
                         break;
                 }
-                if (!edit)
+                if( cmbo != null)
+                {
+                    this.cmbo.Side = this.DataContext as Side;
+                }
+                else if (!edit)
                 {
                     ((Order)App.Current.MainWindow.DataContext).Items.Add((Side)DataContext);
                 }
@@ -65,7 +76,10 @@ namespace PointOfSale
                 {
                     ((Order)App.Current.MainWindow.DataContext).Items[index] = (Side)DataContext;
                 }
-                NavigationService.Navigate(new MenuCategorySelection());
+                if (cmbo == null)
+                    NavigationService.Navigate(new MenuCategorySelection());
+                else
+                    NavigationService.Navigate(new CustomizeCombo(cmbo));
             }
         }
         private void FryClick( object sender, RoutedEventArgs args )

@@ -42,6 +42,7 @@ namespace DinoDiner.Menu
                 NotifyOfPropertyChanged("Name");
                 NotifyOfPropertyChanged("Ingredients");
                 NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
                 ingredients.Add("Cane Sugar");
             }
         }

@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -23,10 +24,18 @@ namespace PointOfSale
     /// </summary>
     public partial class CustomizeCombo : Page
     {
+        
         public CustomizeCombo()
         {
             InitializeComponent();
         }
+
+        public CustomizeCombo( CretaceousCombo cmbo)
+        {
+            InitializeComponent();
+            this.DataContext = cmbo;
+        }
+
         /// <summary>
         /// Click handler for the drink button
         /// </summary>
@@ -34,7 +43,7 @@ namespace PointOfSale
         /// <param name="e">The arguements of the event</param>
         private void DrinkClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DrinkSelection());
+            NavigationService.Navigate(new DrinkSelection(DataContext as CretaceousCombo));
         }
         /// <summary>
         /// Click handler for the side
@@ -43,7 +52,20 @@ namespace PointOfSale
         /// <param name="e">The arguements of the event</param>
         private void SideClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SideSelection());
+            NavigationService.Navigate(new SideSelection(DataContext as CretaceousCombo));
+        }
+
+        private void OnSizeChange(object sender, RoutedEventArgs args)
+        {
+            if (sender is RadioButton btn)
+            {
+                ((CretaceousCombo)DataContext).Size = (DinoDiner.Menu.Size)Enum.Parse(typeof(DinoDiner.Menu.Size), btn.Content.ToString().Replace(" ", ""));
+                ((CretaceousCombo)DataContext).Drink.Size = (DinoDiner.Menu.Size)Enum.Parse(typeof(DinoDiner.Menu.Size), btn.Content.ToString().Replace(" ", ""));
+                ((CretaceousCombo)DataContext).Side.Size = (DinoDiner.Menu.Size)Enum.Parse(typeof(DinoDiner.Menu.Size), btn.Content.ToString().Replace(" ", ""));
+
+                NavigationService.Navigate(new MenuCategorySelection());
+
+            }
         }
     }
 }

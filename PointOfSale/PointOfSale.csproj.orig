@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuide>{9FABDA8A-4F96-4763-A7C3-41AC367CE151}</ProjectGuide>
+    <ProjectGuid>{9FABDA8A-4F96-4763-A7C3-41AC367CE151}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PointOfSale</RootNamespace>
     <AssemblyName>PointOfSale</AssemblyName>
@@ -14,7 +14,6 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <ProjectGuid>{9FABDA8A-4F96-4763-A7C3-41AC367CE151}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,22 +53,8 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CustomizeVelociwrap.xaml.cs">
-      <DependentUpon>CustomizeVelociwrap.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomizeDinonuggets.xaml.cs">
-      <DependentUpon>CustomizeDinonuggets.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomizeSteakosaurus.xaml.cs">
-      <DependentUpon>CustomizeSteakosaurus.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomizeBrontowurst.xaml.cs">
-      <DependentUpon>CustomizeBrontowurst.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomizeTRex.xaml.cs">
-      <DependentUpon>CustomizeTRex.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CustomisePrehistoricPBJ.xaml.cs">
       <DependentUpon>CustomisePrehistoricPBJ.xaml</DependentUpon>
     </Compile>
@@ -95,26 +80,6 @@
     <Page Include="ComboSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomizeVelociwrap.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CustomizeDinonuggets.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CustomizeSteakosaurus.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CustomizeBrontowurst.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CustomizeTRex.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="CustomisePrehistoricPBJ.xaml">
       <SubType>Designer</SubType>
@@ -202,6 +167,7 @@
       <Name>Menu</Name>
     </ProjectReference>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <Resource Include="Images\DinoDiner-01.png" />
     <Resource Include="Images\DinoDiner-02.png" />
@@ -219,6 +185,7 @@
     <Resource Include="Images\DinoDiner-14.png" />
     <Resource Include="Images\DinoDiner-15.png" />
   </ItemGroup>
-  <ItemGroup />
+=======
+>>>>>>> f5ab4187b46413023088671f0c3df19701a1aace
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
