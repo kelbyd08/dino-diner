@@ -77,6 +77,35 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.cmbo = cmbo;
+            DataContext = cmbo.Drink;
+            if (cmbo.Drink != null)
+            {
+                BitmapImage img = new BitmapImage();
+                img.BeginInit();
+
+                if (cmbo.Drink is Tyrannotea)
+                {
+                    show_tea();
+                    img.UriSource = new Uri("pack://application:,,,/" + img_srcs[1]);
+                }
+                else if (cmbo.Drink is Sodasaurus)
+                {
+                    img.UriSource = new Uri("pack://application:,,,/" + img_srcs[0]);
+                    show_soda();
+                }
+                else if (cmbo.Drink is Water)
+                {
+                    show_water();
+                    img.UriSource = new Uri("pack://application:,,,/" + img_srcs[3]);
+                }
+                else if (cmbo.Drink is JurassicJava)
+                {
+                    show_java();
+                    img.UriSource = new Uri("pack://application:,,,/" + img_srcs[2]);
+                }
+                img.EndInit();
+                SelectedDrink.Source = img;
+            }
         }
 
         private void show_soda()
@@ -149,6 +178,8 @@ namespace PointOfSale
             show_tea();
 
             DataContext = new Tyrannotea();
+            if (cmbo != null)
+                cmbo.Drink = DataContext as Tyrannotea;
             /*----------------------------------------------------------------
             Set the currently selected drink image
             ----------------------------------------------------------------*/
@@ -204,7 +235,15 @@ namespace PointOfSale
         /// <param name="e">The arguements of the event</param>
         private void FlavorClick(object sender, RoutedEventArgs e)
         {
-            FlavorSelection flvr = new FlavorSelection(edit, index);
+            FlavorSelection flvr;
+            if (cmbo != null)
+            {
+                flvr = new FlavorSelection(cmbo);
+            }
+            else
+            {
+                flvr = new FlavorSelection(edit, index);
+            }
             flvr.DataContext = DataContext;
             NavigationService.Navigate(flvr);
         }

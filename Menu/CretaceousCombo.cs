@@ -35,7 +35,10 @@ namespace DinoDiner.Menu
             get { return side; }
             set {
                 this.side = value;
-                this.side.Size = this.size;
+                side.PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
+                {
+                    NotifyOfPropertyChanged(args.PropertyName);
+                };
                 NotifyOfPropertyChanged("Ingredients");
                 NotifyOfPropertyChanged("Price");
                 NotifyOfPropertyChanged("Side");
@@ -49,6 +52,10 @@ namespace DinoDiner.Menu
             get { return drink; }
             set {
                 drink = value;
+                drink.PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
+                {
+                    NotifyOfPropertyChanged(args.PropertyName);
+                };
                 NotifyOfPropertyChanged("Ingredients");
                 NotifyOfPropertyChanged("Price");
                 NotifyOfPropertyChanged("Drink");
@@ -89,8 +96,11 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
-                Drink.Size = (Size)value;
-                Side.Size = value;
+                if( Drink.Size == Size.Small)
+                    Drink.Size = (Size)value;
+
+                if( Side.Size == Size.Small)
+                    Side.Size = value;
                 NotifyOfPropertyChanged("Size");
                 NotifyOfPropertyChanged("Price");
                 NotifyOfPropertyChanged("Special");

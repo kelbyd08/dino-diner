@@ -6,21 +6,31 @@ using System.Linq;
 
 namespace DinoDiner.Menu
 {
-    class Menu
+    public class Menu
     {
-        List<Entree> entrees = new List<Entree>() { new Brontowurst(),
+        public List<CretaceousCombo> combos = new List<CretaceousCombo>() 
+                                                                { 
+                                                                new CretaceousCombo(new Brontowurst()),
+                                                                new CretaceousCombo(new DinoNuggets()),
+                                                                new CretaceousCombo(new PrehistoricPBJ()),
+                                                                new CretaceousCombo(new PterodactylWings()),
+                                                                new CretaceousCombo(new SteakosaurusBurger()),
+                                                                new CretaceousCombo(new TRexKingBurger()),
+                                                                new CretaceousCombo(new VelociWrap()),
+                                                                };
+        public List<Entree> entrees = new List<Entree>() { new Brontowurst(),
                                                     new DinoNuggets(),
                                                     new PrehistoricPBJ(),
                                                     new PterodactylWings(),
                                                     new SteakosaurusBurger(),
                                                     new TRexKingBurger(),
                                                     new VelociWrap() };
-        List<Drink> drinks = new List<Drink>(){ new JurassicJava(),
+        public List<Drink> drinks = new List<Drink>(){ new JurassicJava(),
                                                 new Sodasaurus(),
                                                 new Tyrannotea(),
                                                 new Water()
                                                 };
-        List<Side> sides = new List<Side>() {   new Fryceritops(),
+        public List<Side> sides = new List<Side>() {   new Fryceritops(),
                                                 new MeteorMacAndCheese(),
                                                 new MezzorellaSticks(),
                                                 new Triceritots() };

@@ -32,6 +32,7 @@ namespace DinoDiner.Menu
                 _flavor = value;
                 NotifyOfPropertyChanged("Name");
                 NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("Special");
             }
         }
         /// <summary>

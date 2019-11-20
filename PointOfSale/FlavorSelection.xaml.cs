@@ -23,10 +23,17 @@ namespace PointOfSale
     {
         bool editing;
         int index;
+        private CretaceousCombo cmbo;
         public FlavorSelection(bool edit = false, int index = 0)
         {
             editing = edit;
             this.index = index;
+            InitializeComponent();
+        }
+        public FlavorSelection(CretaceousCombo cmbo)
+        {
+            this.cmbo = cmbo;
+            DataContext = cmbo.Drink;
             InitializeComponent();
         }
         private void OnFlavorChange( object sender, RoutedEventArgs args)
@@ -34,7 +41,10 @@ namespace PointOfSale
             if( sender is RadioButton btn)
             {
                 ((Sodasaurus)DataContext).Flavor = (DinoDiner.Menu.SodasaurusFlavor)Enum.Parse(typeof(DinoDiner.Menu.SodasaurusFlavor), btn.Content.ToString().Replace(" ", "") );
-                NavigationService.Navigate(new DrinkSelection((Drink)DataContext, editing, index));
+                if (cmbo == null)
+                    NavigationService.Navigate(new DrinkSelection((Drink)DataContext, editing, index));
+                else
+                    NavigationService.Navigate(new DrinkSelection(cmbo));
 
             }
         }

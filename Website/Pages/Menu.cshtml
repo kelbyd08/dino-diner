@@ -1,0 +1,95 @@
+﻿@page
+@model Website.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h1>Menu</h1>
+
+<div class="content">
+    <div id="combo_container">
+        <h2>Combos</h2>
+        @foreach (DinoDiner.Menu.CretaceousCombo x in Model.menu.combos)
+        {
+            <div class="menu-item">
+                <h3>@x.Description</h3>
+                <p>Price: @x.Price</p>
+                <p>Calories: @x.Calories</p>
+                <div class="ingredients">
+                    <h4>Ingredients:</h4>
+                    @foreach (string s in x.Ingredients)
+                    {
+                        <p>
+                            @s
+                        </p>
+                    }
+                </div>
+
+            </div>
+        }
+    </div>
+    <div id="entree_container">
+        <h2>Entrees</h2>
+        @foreach( DinoDiner.Menu.Entree x in Model.menu.entrees )
+        {
+            <div class="menu-item">
+                <h3>@x.Description</h3>
+                <p>Price: @x.Price</p>
+                <p>Calories: @x.Calories</p>
+                <div class="ingredients">
+                    <h4>Ingredients:</h4>
+                @foreach (string s in x.Ingredients)
+                {
+                    <p>
+                    @s
+                    </p>
+                }
+                </div>
+
+            </div>
+        }
+
+    </div>
+    <div id="drink_container">
+        <h2>Drinks</h2>
+        @foreach (DinoDiner.Menu.Drink x in Model.menu.drinks)
+        {
+            <div class="menu-item">
+                <h3>@x.Description</h3>
+                <p>Price: @x.Price</p>
+                <p>Calories: @x.Calories</p>
+                <div class="ingredients">
+                    <h4>Ingredients:</h4>
+                    @foreach (string s in x.Ingredients)
+                    {
+                        <p>
+                            @s
+                        </p>
+                    }
+                </div>
+
+            </div>
+        }
+    </div>
+    <div id="side_container">
+        <h2>Sides</h2>
+        @foreach (DinoDiner.Menu.Side x in Model.menu.sides)
+        {
+            <div class="menu-item">
+                <h3>@x.Description</h3>
+                <p>Price: @x.Price</p>
+                <p>Calories: @x.Calories</p>
+                <div class="ingredients">
+                    <h4>Ingredients:</h4>
+                    @foreach (string s in x.Ingredients)
+                    {
+                        <p>
+                            @s
+                        </p>
+                    }
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
