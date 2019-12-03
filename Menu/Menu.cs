@@ -34,10 +34,22 @@ namespace DinoDiner.Menu
                                                 new MeteorMacAndCheese(),
                                                 new MezzorellaSticks(),
                                                 new Triceritots() };
-            
+
+        public HashSet<string> PossibleIngredients = new HashSet<string>();
         public Menu()
         {
-            
+            foreach(CretaceousCombo cmbo in combos)
+            {
+                PossibleIngredients.UnionWith(cmbo.Ingredients);
+            }
+            foreach (Drink drink in drinks)
+            {
+                PossibleIngredients.UnionWith(drink.Ingredients);
+            }
+            foreach (Side side in sides)
+            {
+                PossibleIngredients.UnionWith(side.Ingredients);
+            }
         }
     }
 }

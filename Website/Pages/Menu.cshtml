@@ -7,89 +7,142 @@
 <h1>Menu</h1>
 
 <div class="content">
-    <div id="combo_container">
-        <h2>Combos</h2>
-        @foreach (DinoDiner.Menu.CretaceousCombo x in Model.menu.combos)
-        {
-            <div class="menu-item">
-                <h3>@x.Description</h3>
-                <p>Price: @x.Price</p>
-                <p>Calories: @x.Calories</p>
-                <div class="ingredients">
-                    <h4>Ingredients:</h4>
+
+    <div class="menu">
+        <div id="combo_container">
+            <h2>Combos</h2>
+            @foreach (DinoDiner.Menu.CretaceousCombo x in Model.menu.combos)
+            {
+                <div class="menu-item">
+                    <h3>@x.Description</h3>
+                    <p>Price: @x.Price</p>
+                    <p>Calories: @x.Calories</p>
+                    <p>Side: @x.Side.ToString()</p>
+                    <p>Drink: @x.Drink.ToString()</p>
+                    <div class="ingredients">
+                        <h4>Ingredients:</h4>
+                        @foreach (string s in x.Ingredients)
+                        {
+                            <p>
+                                @s
+                            </p>
+                        }
+                    </div>
+
+                </div>
+            }
+        </div>
+        <div id="entree_container">
+            <h2>Entrees</h2>
+            @foreach( DinoDiner.Menu.Entree x in Model.menu.entrees )
+            {
+                <div class="menu-item">
+                    <h3>@x.Description</h3>
+                    <p>Price: @x.Price</p>
+                    <p>Calories: @x.Calories</p>
+                    <div class="ingredients">
+                        <h4>Ingredients:</h4>
                     @foreach (string s in x.Ingredients)
                     {
                         <p>
-                            @s
+                        @s
                         </p>
                     }
-                </div>
+                    </div>
 
-            </div>
-        }
+                </div>
+            }
+
+        </div>
+        <div id="drink_container">
+            <h2>Drinks</h2>
+            @foreach (DinoDiner.Menu.Drink x in Model.menu.drinks)
+            {
+                <div class="menu-item">
+                    <h3>@x.Description</h3>
+                    <p>Price: @x.Price</p>
+                    <p>Calories: @x.Calories</p>
+                    <div class="ingredients">
+                        <h4>Ingredients:</h4>
+                        @foreach (string s in x.Ingredients)
+                        {
+                            <p>
+                                @s
+                            </p>
+                        }
+                    </div>
+
+                </div>
+            }
+        </div>
+        <div id="side_container">
+            <h2>Sides</h2>
+            @foreach (DinoDiner.Menu.Side x in Model.menu.sides)
+            {
+                <div class="menu-item">
+                    <h3>@x.Description</h3>
+                    <p>Price: @x.Price</p>
+                    <p>Calories: @x.Calories</p>
+                    <div class="ingredients">
+                        <h4>Ingredients:</h4>
+                        @foreach (string s in x.Ingredients)
+                        {
+                            <p>
+                                @s
+                            </p>
+                        }
+                    </div>
+
+                </div>
+            }
+        </div>
     </div>
-    <div id="entree_container">
-        <h2>Entrees</h2>
-        @foreach( DinoDiner.Menu.Entree x in Model.menu.entrees )
-        {
-            <div class="menu-item">
-                <h3>@x.Description</h3>
-                <p>Price: @x.Price</p>
-                <p>Calories: @x.Calories</p>
-                <div class="ingredients">
-                    <h4>Ingredients:</h4>
-                @foreach (string s in x.Ingredients)
+    <div class="sidebar">
+        <form method="post">
+            <div class="search">
+                <input type="text" name="search" id="search" value="@Model.search"/>
+                <input type="submit" value="Search and Filter" />
+            </div>
+            <div class="category_filter">
+                <h4>Menu Category</h4>
+                <label>
+                    <input type="checkbox" value="Combo" name="categories" checked="@Model.categories.Contains("Combo")" />
+                    Combo
+                </label>
+                <label>
+                    <input type="checkbox" value="Entree" name="categories" checked="@Model.categories.Contains("Entree")" />
+                    Entree
+                </label>
+                <label>
+                    <input type="checkbox" value="Side" name="categories" checked="@Model.categories.Contains("Side")" />
+                    Side
+                </label>
+                <label>
+                    <input type="checkbox" value="Drink" name="categories" checked="@Model.categories.Contains("Drink")" />
+                    Drink
+                </label>
+            </div>
+            <div class="price_filter">
+                <h4>Price</h4>
+                <label>
+                    Minimum Price
+                    <input type="number" id="minimum-price" step=".01" name="minimumPrice" value="@Model.minimumPrice"/>
+                </label>
+                <label>
+                    Maximum Price
+                    <input type="number" id="maximum-price" step=".01" name="maximumPrice" value="@Model.maximumPrice" />
+                </label>
+            </div>
+            <div>
+                <h4>Ingredients</h4>
+                @foreach (string ing in Model.menu.PossibleIngredients.OrderBy(str => str))
                 {
-                    <p>
-                    @s
-                    </p>
+                    <label>
+                        <input type="checkbox" value="@ing" name="filteredIngredients" checked="@Model.filteredIngredients.Contains(ing)" />
+                        @ing
+                    </label>
                 }
-                </div>
-
             </div>
-        }
-
-    </div>
-    <div id="drink_container">
-        <h2>Drinks</h2>
-        @foreach (DinoDiner.Menu.Drink x in Model.menu.drinks)
-        {
-            <div class="menu-item">
-                <h3>@x.Description</h3>
-                <p>Price: @x.Price</p>
-                <p>Calories: @x.Calories</p>
-                <div class="ingredients">
-                    <h4>Ingredients:</h4>
-                    @foreach (string s in x.Ingredients)
-                    {
-                        <p>
-                            @s
-                        </p>
-                    }
-                </div>
-
-            </div>
-        }
-    </div>
-    <div id="side_container">
-        <h2>Sides</h2>
-        @foreach (DinoDiner.Menu.Side x in Model.menu.sides)
-        {
-            <div class="menu-item">
-                <h3>@x.Description</h3>
-                <p>Price: @x.Price</p>
-                <p>Calories: @x.Calories</p>
-                <div class="ingredients">
-                    <h4>Ingredients:</h4>
-                    @foreach (string s in x.Ingredients)
-                    {
-                        <p>
-                            @s
-                        </p>
-                    }
-                </div>
-
-            </div>
-        }
+        </form>
     </div>
 </div>
