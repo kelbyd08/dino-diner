@@ -80,7 +80,7 @@ namespace DinoDiner.Menu
             }
         }
 
-        public Size size = Size.Small;
+        Size size = Size.Small;
 
         /// <summary>
         /// Event handler for property changed events
@@ -96,11 +96,9 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
-                if( Drink.Size == Size.Small)
-                    Drink.Size = (Size)value;
+                Drink.Size = (Size)value;
 
-                if( Side.Size == Size.Small)
-                    Side.Size = value;
+                Side.Size = value;
                 NotifyOfPropertyChanged("Size");
                 NotifyOfPropertyChanged("Price");
                 NotifyOfPropertyChanged("Special");

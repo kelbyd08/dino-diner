@@ -35,41 +35,17 @@ namespace Website.Pages
             if ( search != null )
             {
                 List<CretaceousCombo> cmbos = new List<CretaceousCombo>();
-                foreach(CretaceousCombo cmbo in menu.combos)
-                {
-                    if(cmbo.Description.Contains(search, StringComparison.OrdinalIgnoreCase))
-                    {
-                        cmbos.Add(cmbo);
-                    }
-                }
+                cmbos.AddRange(menu.combos.Where(x => x.Description.Contains(search, StringComparison.OrdinalIgnoreCase)));
                 menu.combos = cmbos;
 
                 List<Entree> entrees = new List<Entree>();
-                foreach (Entree entr in menu.entrees)
-                {
-                    if (entr.Description.Contains(search, StringComparison.OrdinalIgnoreCase))
-                    {
-                        entrees.Add(entr);
-                    }
-                }
+                entrees.AddRange(menu.entrees.Where(x => x.Description.Contains(search, StringComparison.OrdinalIgnoreCase)));
                 menu.entrees = entrees;
                 List<Drink> drinks = new List<Drink>();
-                foreach (Drink dnk in menu.drinks)
-                {
-                    if (dnk.Description.Contains(search, StringComparison.OrdinalIgnoreCase))
-                    {
-                        drinks.Add(dnk);
-                    }
-                }
+                drinks.AddRange(menu.drinks.Where(x => x.Description.Contains(search, StringComparison.OrdinalIgnoreCase)));
                 menu.drinks = drinks;
                 List<Side> sides = new List<Side>();
-                foreach (Side sd in menu.sides)
-                {
-                    if (sd.Description.Contains(search, StringComparison.OrdinalIgnoreCase))
-                    {
-                        sides.Add(sd);
-                    }
-                }
+                sides.AddRange(menu.sides.Where(x => x.Description.Contains(search, StringComparison.OrdinalIgnoreCase)));
                 menu.sides = sides;
             }
             #endregion
@@ -100,82 +76,39 @@ namespace Website.Pages
             if(minimumPrice != null )
             {
                 List<CretaceousCombo> cmbos = new List<CretaceousCombo>();
-                foreach (CretaceousCombo cmbo in menu.combos)
-                {
-                    if (cmbo.Price > minimumPrice)
-                    {
-                        cmbos.Add(cmbo);
-                    }
-                }
+                cmbos.AddRange(menu.combos.Where(x => x.Price > minimumPrice));
                 menu.combos = cmbos;
 
                 List<Entree> entrees = new List<Entree>();
-                foreach (Entree entr in menu.entrees)
-                {
-                    if (entr.Price > minimumPrice)
-                    {
-                        entrees.Add(entr);
-                    }
-                }
+                entrees.AddRange(menu.entrees.Where(x => x.Price > minimumPrice));
                 menu.entrees = entrees;
+
                 List<Drink> drinks = new List<Drink>();
-                foreach (Drink dnk in menu.drinks)
-                {
-                    if (dnk.Price > minimumPrice)
-                    {
-                        drinks.Add(dnk);
-                    }
-                }
+                drinks.AddRange(menu.drinks.Where(x => x.Price > minimumPrice));
                 menu.drinks = drinks;
                 List<Side> sides = new List<Side>();
-                foreach (Side sd in menu.sides)
-                {
-                    if (sd.Price > minimumPrice)
-                    {
-                        sides.Add(sd);
-                    }
-                }
+                sides.AddRange(menu.sides.Where(x => x.Price > minimumPrice));
                 menu.sides = sides;
             }
 
             if (maximumPrice != null)
             {
                 List<CretaceousCombo> cmbos = new List<CretaceousCombo>();
-                foreach (CretaceousCombo cmbo in menu.combos)
-                {
-                    if (cmbo.Price < maximumPrice)
-                    {
-                        cmbos.Add(cmbo);
-                    }
-                }
+
+                cmbos.AddRange(menu.combos.Where(x => x.Price < maximumPrice));
+
                 menu.combos = cmbos;
 
                 List<Entree> entrees = new List<Entree>();
-                foreach (Entree entr in menu.entrees)
-                {
-                    if (entr.Price < maximumPrice)
-                    {
-                        entrees.Add(entr);
-                    }
-                }
+
+                entrees.AddRange(menu.entrees.Where(x => x.Price < maximumPrice));
                 menu.entrees = entrees;
+
                 List<Drink> drinks = new List<Drink>();
-                foreach (Drink dnk in menu.drinks)
-                {
-                    if (dnk.Price < maximumPrice)
-                    {
-                        drinks.Add(dnk);
-                    }
-                }
+                drinks.AddRange(menu.drinks.Where(x => x.Price < maximumPrice));
                 menu.drinks = drinks;
                 List<Side> sides = new List<Side>();
-                foreach (Side sd in menu.sides)
-                {
-                    if (sd.Price < maximumPrice)
-                    {
-                        sides.Add(sd);
-                    }
-                }
+                sides.AddRange(menu.sides.Where(x => x.Price < maximumPrice));
                 menu.sides = sides;
             }
             #endregion
@@ -188,38 +121,12 @@ namespace Website.Pages
                 List<Drink> drinks = new List<Drink>();
                 List<Side> sides = new List<Side>();
 
-                foreach (string ing in filteredIngredients)
-                {
-                    foreach (CretaceousCombo cmbo in menu.combos)
-                    {
-                        if (!cmbo.Ingredients.Contains(ing))
-                        {
-                            cmbos.Add(cmbo);
-                        }
-                    }
+                cmbos.AddRange(menu.combos.Where(x => !x.Ingredients.Intersect(filteredIngredients).Any()));
 
-                    foreach (Entree entr in menu.entrees)
-                    {
-                        if (!entr.Ingredients.Contains(ing))
-                        {
-                            entrees.Add(entr);
-                        }
-                    }
-                    foreach (Drink dnk in menu.drinks)
-                    {
-                        if (!dnk.Ingredients.Contains(ing))
-                        {
-                            drinks.Add(dnk);
-                        }
-                    }
-                    foreach (Side sd in menu.sides)
-                    {
-                        if (!sd.Ingredients.Contains(ing))
-                        {
-                            sides.Add(sd);
-                        }
-                    }
-                }
+                entrees.AddRange(menu.entrees.Where(x => !x.Ingredients.Intersect(filteredIngredients).Any()));
+
+                drinks.AddRange(menu.drinks.Where(x => !x.Ingredients.Intersect(filteredIngredients).Any()));
+                sides.AddRange(menu.sides.Where(x => !x.Ingredients.Intersect(filteredIngredients).Any()));
                 menu.combos = cmbos;
                 menu.entrees = entrees;
                 menu.drinks = drinks;

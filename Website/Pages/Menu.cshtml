@@ -15,10 +15,30 @@
             {
                 <div class="menu-item">
                     <h3>@x.Description</h3>
-                    <p>Price: @x.Price</p>
-                    <p>Calories: @x.Calories</p>
                     <p>Side: @x.Side.ToString()</p>
                     <p>Drink: @x.Drink.ToString()</p>
+                    <table>
+                        <tr>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Calories</th>
+                        </tr>
+                        @foreach (DinoDiner.Menu.Size sz in Enum.GetValues(typeof(DinoDiner.Menu.Size)))
+                        {
+                         <tr>
+                             @{x.Size = sz;}
+                             <td>
+                                 <p>@x.Size</p>
+                             </td>
+                             <td>
+                                 <p>@x.Price</p>
+                             </td>
+                             <td>
+                                 <p>@x.Calories</p>
+                             </td>
+                         </tr>
+                         }
+                    </table>
                     <div class="ingredients">
                         <h4>Ingredients:</h4>
                         @foreach (string s in x.Ingredients)
@@ -58,42 +78,82 @@
             <h2>Drinks</h2>
             @foreach (DinoDiner.Menu.Drink x in Model.menu.drinks)
             {
-                <div class="menu-item">
-                    <h3>@x.Description</h3>
-                    <p>Price: @x.Price</p>
-                    <p>Calories: @x.Calories</p>
-                    <div class="ingredients">
-                        <h4>Ingredients:</h4>
-                        @foreach (string s in x.Ingredients)
-                        {
-                            <p>
-                                @s
-                            </p>
-                        }
-                    </div>
+        <div class="menu-item">
+            <h3>@x.Description</h3>
+            <table>
+                <tr>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Calories</th>
+                </tr>
+                @foreach (DinoDiner.Menu.Size sz in Enum.GetValues(typeof(DinoDiner.Menu.Size)))
+                {
+                    <tr>
+                        @{x.Size = sz;}
+                        <td>
+                            <p>@x.Size</p>
+                        </td>
+                        <td>
+                            <p>@x.Price</p>
+                        </td>
+                        <td>
+                            <p>@x.Calories</p>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="ingredients">
+                <h4>Ingredients:</h4>
+                @foreach (string s in x.Ingredients)
+                {
+                    <p>
+                        @s
+                    </p>
+                }
+            </div>
 
-                </div>
+        </div>
             }
         </div>
         <div id="side_container">
             <h2>Sides</h2>
             @foreach (DinoDiner.Menu.Side x in Model.menu.sides)
             {
-                <div class="menu-item">
-                    <h3>@x.Description</h3>
-                    <p>Price: @x.Price</p>
-                    <p>Calories: @x.Calories</p>
-                    <div class="ingredients">
-                        <h4>Ingredients:</h4>
-                        @foreach (string s in x.Ingredients)
-                        {
-                            <p>
-                                @s
-                            </p>
-                        }
-                    </div>
+        <div class="menu-item">
+            <h3>@x.Description</h3>
+            <table>
+                <tr>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Calories</th>
+                </tr>
+                @foreach (DinoDiner.Menu.Size sz in Enum.GetValues(typeof(DinoDiner.Menu.Size)))
+                {
+                    <tr>
+                        @{x.Size = sz;}
+                        <td>
+                            <p>@x.Size</p>
+                        </td>
+                        <td>
+                            <p>@x.Price</p>
+                        </td>
+                        <td>
+                            <p>@x.Calories</p>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="ingredients">
+                <h4>Ingredients:</h4>
+                @foreach (string s in x.Ingredients)
+                {
+                    <p>
+                        @s
+                    </p>
+                }
+            </div>
 
-                </div>
+        </div>
             }
         </div>
     </div>
